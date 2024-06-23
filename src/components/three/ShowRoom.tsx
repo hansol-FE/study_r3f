@@ -1,9 +1,14 @@
 import * as THREE from "three";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { useLoader } from "@react-three/fiber";
 
 const ShowRoom = () => {
+  const gltf = useLoader(GLTFLoader, "./models/custom.glb");
+
   return (
     <>
-      <mesh
+      <primitive object={gltf.scene} />
+      {/* <mesh
         rotation={[
           THREE.MathUtils.degToRad(45), //x축
           THREE.MathUtils.degToRad(45), //y축
@@ -12,7 +17,7 @@ const ShowRoom = () => {
       >
         <boxGeometry />
         <meshStandardMaterial />
-      </mesh>
+      </mesh> */}
     </>
   );
 };

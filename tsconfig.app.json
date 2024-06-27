@@ -25,7 +25,7 @@
 
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/ecommerce/components/*"]
     },
 
     "types": ["node"]

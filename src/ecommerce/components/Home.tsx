@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import ShowRoom from "@components/three/ShowRoom";
+import ShowRoom from "src/ecommerce/components/three/ShowRoom";
 
 const Home = () => {
   return (

@@ -1,9 +1,12 @@
 import "./App.css";
-import Home from "./components/Home";
+import Home from "./ecommerce/components/Home";
+import TossFace from "./toss-face/TossFace";
+
 function App() {
   return (
     <>
-      <Home />
+      {/* <Home /> */}
+      <TossFace />
     </>
   );
 }

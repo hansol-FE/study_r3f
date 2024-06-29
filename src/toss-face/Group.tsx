@@ -9,50 +9,37 @@ const EMOJI_NAME = ["love", "mouth", "emoji1", "ghost", "happy"];
 const COUNT = EMOJI_NAME.length;
 
 const Group = () => {
+  const groupRef = useRef<THREE.Group>(null);
   const cameraControlsRef = useRef<CameraControls>(null);
 
-  const initialPositions = useMemo(() => {
+  const initialPositions = () => {
     const getRandomNumberInRange = (start: number, end: number) => {
       return Math.random() * (end - start) + start;
     };
 
     const randomPositions = new Array(COUNT * 3);
-    for (let i = 0; i < COUNT * 3; i++) {
-      randomPositions[i] = getRandomNumberInRange(-2, 2);
+    for (let i = 0; i < 100; i++) {
+      randomPositions[i] = getRandomNumberInRange(-5, 5);
     }
     return randomPositions;
-  }, []);
+  };
 
-  const [positions, setPositions] = useState<number[]>(initialPositions);
-  const [isFocus, setIsFocus] = useState(false);
+  const [positions] = useState<number[]>(initialPositions);
   const [disableAutoRotate, setDisableAutoRotate] = useState<boolean>(false);
 
   const EMOJI_ARRAY = useMemo(() => {
     const emojis = [];
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 100; i++) {
       emojis.push(EMOJI_NAME[i % EMOJI_NAME.length]);
     }
     return emojis;
   }, []);
 
-  //   useEffect(() => {
-  //     if (!disableAutoRotate) {
-  //       setPositions(initialPositions);
-  //     }
-  //   }, [disableAutoRotate, initialPositions]);
+  useEffect(() => {
+    cameraControlsRef.current?.setTarget(0, 0, 0, true);
+  }, []);
 
-  let angle = 0;
-  let distance = 5;
   useFrame((_, delta) => {
-    // 턴테이블 효과
-    // cameraControlsRef.current?.setPosition(
-    //   distance * Math.sin(angle),
-    //   0.8,
-    //   distance * Math.cos(angle),
-    //   true
-    // );
-    // angle = angle + 0.005;
-
     if (cameraControlsRef.current && !disableAutoRotate) {
       cameraControlsRef.current.azimuthAngle -= THREE.MathUtils.degToRad(
         5 * delta
@@ -60,20 +47,9 @@ const Group = () => {
     }
   });
 
-  useEffect(() => {
-    cameraControlsRef.current?.setTarget(0, 0, 0, true);
-    // cameraControlsRef.current?.addEventListener("control", () => {
-    //   setIsFocus(true);
-    // });
-
-    // cameraControlsRef.current?.addEventListener("sleep", () => {
-    //   setIsFocus(false);
-    // });
-  }, []);
-
   return (
     <>
-      <>
+      <group ref={groupRef}>
         <CameraControls
           ref={cameraControlsRef}
           enabled={true}
@@ -93,7 +69,7 @@ const Group = () => {
             />
           );
         })}
-      </>
+      </group>
     </>
   );
 };

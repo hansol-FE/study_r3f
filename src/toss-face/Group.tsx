@@ -19,13 +19,12 @@ const Group = () => {
 
     const randomPositions = new Array(COUNT * 3);
     for (let i = 0; i < 100; i++) {
-      randomPositions[i] = getRandomNumberInRange(-5, 5);
+      randomPositions[i] = getRandomNumberInRange(-10, 10);
     }
     return randomPositions;
   };
 
   const [positions] = useState<number[]>(initialPositions);
-  const [disableAutoRotate, setDisableAutoRotate] = useState<boolean>(false);
 
   const EMOJI_ARRAY = useMemo(() => {
     const emojis = [];
@@ -40,17 +39,17 @@ const Group = () => {
   }, []);
 
   useFrame((_, delta) => {
-    if (cameraControlsRef.current && !disableAutoRotate) {
-      cameraControlsRef.current.azimuthAngle -= THREE.MathUtils.degToRad(
-        5 * delta
-      );
-    }
+    // if (cameraControlsRef.current && !disableAutoRotate) {
+    //   cameraControlsRef.current.azimuthAngle -= THREE.MathUtils.degToRad(
+    //     5 * delta
+    //   );
+    // }
   });
 
   return (
     <>
       <group ref={groupRef}>
-        <CameraControls
+        {/* <CameraControls
           ref={cameraControlsRef}
           enabled={true}
           dollyToCursor={true}
@@ -58,7 +57,7 @@ const Group = () => {
           maxDistance={10}
           onStart={() => setDisableAutoRotate(true)}
           onEnd={() => setDisableAutoRotate(false)}
-        />
+        /> */}
 
         {EMOJI_ARRAY.map((name, idx) => {
           return (

@@ -1,9 +1,46 @@
-body {
-  margin: 0;
-  padding: 0;
-}
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,800;1,6..12,400&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 #root {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
+}
+
+body {
+  margin: 0;
+}
+
+.grid_transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.grid-tile {
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  margin-left: -1px;
+  margin-top: -1px;
+  /* transform: scaleY(0); */
+  background: #79837a;
+  transform-origin: top;
+}
+
+.bottom-grid-tile {
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  margin-left: -1px;
+  margin-top: -1px;
+  /* transform: scaleY(0); */
+  background: #79837a;
+  transform-origin: bottom;
 }

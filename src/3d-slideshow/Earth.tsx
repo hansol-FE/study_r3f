@@ -6,7 +6,7 @@ import { useControls } from "leva";
 import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-export const Scene4 = () => {
+export const Earth = () => {
   const viewport = useThree((state) => state.viewport);
   const { slideDistance } = useControls({
     slideDistance: {
@@ -16,8 +16,7 @@ export const Scene4 = () => {
     },
   });
 
-  const { scene } = useLoader(GLTFLoader, "models/Earth2.glb");
-  console.log("Earth scene", scene);
+  const { scene } = useLoader(GLTFLoader, "models/Earth.glb");
 
   // useEffect(() => {
   //   scene.traverse((child: any) => {
@@ -32,8 +31,9 @@ export const Scene4 = () => {
     <>
       <motion.group
         dispose={null}
-        position-x={2 * (viewport.width + slideDistance * 1.5)}
-        whileHover={{
+        position-x={2 * (viewport.width + slideDistance * 1.55)}
+        position-y={viewport.height * -0.5}
+        animate={{
           rotateY: Math.PI * 2, // 360도 회전
           scale: 1,
           transition: {
@@ -47,4 +47,4 @@ export const Scene4 = () => {
   );
 };
 
-useGLTF.preload("/models/Neptune.glb");
+useGLTF.preload("/models/Earth.glb");

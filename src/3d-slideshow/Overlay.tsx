@@ -2,8 +2,7 @@ import { atom, useAtom } from "jotai";
 import { useEffect, useState } from "react";
 import { scenes } from "./sceneValue";
 import { motion, AnimatePresence } from "framer-motion";
-import Grid2 from "./Grid2";
-import Grid1 from "./Grid1";
+import Description from "./Description";
 
 export const slideAtom = atom(0);
 
@@ -33,7 +32,8 @@ export const Overlay = () => {
             visible ? "" : "opacity-0"
           } transition-opacity duration-1000`}
         >
-          <h1 className="text-center py-5">Welcome to my 3D World</h1>
+          {/* <h1 className="text-center py-5">Welcome to my 3D Galaxy</h1> */}
+          <h1 className="text-center py-5"></h1>
 
           <div className="absolute top-0 bottom-0 left-0 right-0 flex-1 flex items-center justify-between p-4">
             {/* 왼쪽 화살표  */}
@@ -53,9 +53,9 @@ export const Overlay = () => {
               />
             </svg>
 
-            {/* <div className="z-[-1] w-[85%] h-[85%] bg-black opacity-90">
-              {displaySlide === 0 ? <Grid1 /> : <Grid2 />}
-            </div> */}
+            <div className="absolute top-0  left-0  z-[-1] w-[50%] h-[100%] bg-black opacity-80">
+              <Description scene={scenes[displaySlide]} key={displaySlide} />
+            </div>
 
             {/* 오른쪽 화살표 */}
             <svg
@@ -75,14 +75,14 @@ export const Overlay = () => {
             </svg>
           </div>
 
-          <div className="bg-gradient-to-t from-white/90 pt-20 pb-10 p-4 flex items-center flex-col text-center">
+          <div className="bg-gradient-to-t z-[3] from-white/90 pt-20 pb-10 p-4 flex items-center flex-col text-center">
             <h1 className="text-5xl font-extrabold">
               {scenes[displaySlide].name}
             </h1>
             <p className="text-opacity-60 italic">
-              {scenes[displaySlide].description}
+              {/* {scenes[displaySlide].description} */}
             </p>
-            <div className="flex items-center gap-12 mt-10">
+            {/* <div className="flex items-center gap-12 mt-10">
               <div className="flex flex-col items-center">
                 <div className="flex gap-2 items-center">
                   <svg
@@ -100,10 +100,10 @@ export const Overlay = () => {
                     />
                   </svg>
                   <p className="font-semibold text-3xl">
-                    ${scenes[displaySlide].price.toLocaleString()}
+                    ${scenes[displaySlide].age}
                   </p>
                 </div>
-                <p className="text-sm opacity-80">After Federal Tax Credit</p>
+                <p className="text-sm opacity-80">Age</p>
               </div>
               <div className="flex flex-col items-center">
                 <div className="flex items-center gap-2">
@@ -127,7 +127,7 @@ export const Overlay = () => {
                 </div>
                 <p className="text-sm opacity-80">With one single charge</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </AnimatePresence>

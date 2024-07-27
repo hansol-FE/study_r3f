@@ -4,7 +4,7 @@ import Emoji from "./Emoji";
 import { CameraControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
-const EMOJI_NAME = ["love", "mouth", "emoji1", "ghost", "happy"];
+const EMOJI_NAME = ["meteor1"];
 
 const COUNT = EMOJI_NAME.length;
 
@@ -18,8 +18,8 @@ const Group = () => {
     };
 
     const randomPositions = new Array(COUNT * 3);
-    for (let i = 0; i < 100; i++) {
-      randomPositions[i] = getRandomNumberInRange(-10, 10);
+    for (let i = 0; i < 50; i++) {
+      randomPositions[i] = getRandomNumberInRange(-15, 15);
     }
     return randomPositions;
   };
@@ -28,7 +28,7 @@ const Group = () => {
 
   const EMOJI_ARRAY = useMemo(() => {
     const emojis = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 50; i++) {
       emojis.push(EMOJI_NAME[i % EMOJI_NAME.length]);
     }
     return emojis;

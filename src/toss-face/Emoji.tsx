@@ -16,7 +16,7 @@ const Emoji = ({ position, modelName }: any) => {
   //   const loader = useMemo(() => new GLTFLoader(), []);
   //   const [scene, setScene] = useState<THREE.Group | THREE.Scene | null>(null);
 
-  const { scene } = useLoader(GLTFLoader, `./models/${modelName}.gltf`);
+  const { scene } = useLoader(GLTFLoader, `./models/${modelName}.glb`);
   const copiedScene = useMemo(() => scene.clone(), [scene]);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -34,13 +34,13 @@ const Emoji = ({ position, modelName }: any) => {
   //     });
   //   }, [loader, modelName, matcap]);
 
-  useEffect(() => {
-    copiedScene.traverse((node) => {
-      if (node instanceof THREE.Mesh) {
-        node.material = new THREE.MeshMatcapMaterial({ matcap: matcap });
-      }
-    });
-  }, [copiedScene]);
+  // useEffect(() => {
+  //   copiedScene.traverse((node) => {
+  //     if (node instanceof THREE.Mesh) {
+  //       node.material = new THREE.MeshMatcapMaterial({ matcap: matcap });
+  //     }
+  //   });
+  // }, [copiedScene]);
 
   useEffect(() => {
     if (groupRef.current) {

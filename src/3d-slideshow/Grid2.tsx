@@ -100,7 +100,7 @@ const Section = (props: any) => {
     <motion.section
       className={`
     h-full w-full p-8  mx-auto
-    flex flex-col items-start justify-center
+    flex flex-col items-start justify-center bg-black-700
     `}
       initial={{
         opacity: 0,
